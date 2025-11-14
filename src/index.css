@@ -1,0 +1,423 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GymJM Design System - Fitness & Nutrition App
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Fitness Theme - Green/Blue Gradient */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 142 76% 46%;
+
+    /* Nutrition Theme - Orange/Pink */
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-glow: 340 75% 55%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Custom GymJM Variables */
+    /* Fitness Gradients */
+    --gradient-fitness: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-fitness-subtle: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--primary-glow) / 0.1));
+    
+    /* Nutrition Gradients */
+    --gradient-nutrition: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-nutrition-subtle: linear-gradient(135deg, hsl(var(--secondary) / 0.1), hsl(var(--secondary-glow) / 0.1));
+    
+    /* Hero Gradient */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    
+    /* Glass Effect */
+    --glass-bg: hsl(240 10% 3.9% / 0.8);
+    --glass-border: hsl(0 0% 100% / 0.1);
+
+    /* Shadows */
+    --shadow-fitness: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-nutrition: 0 10px 30px -10px hsl(var(--secondary) / 0.3);
+    --shadow-elevated: 0 20px 60px -20px hsl(0 0% 0% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .mixed {
+    --background: 220 15% 95%;
+    --foreground: 230 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 15%;
+
+    /* Fitness Theme - Vibrant Purple */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 262 83% 68%;
+
+    /* Nutrition Theme - Warm Orange/Pink */
+    --secondary: 340 82% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 25 95% 53%;
+
+    --muted: 220 15% 85%;
+    --muted-foreground: 230 10% 40%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 82%;
+    --input: 220 15% 82%;
+    --ring: 262 83% 58%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 230 25% 15%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 230 25% 15%;
+    --sidebar-border: 220 15% 82%;
+    --sidebar-ring: 262 83% 58%;
+
+    /* Custom Mixed Theme Variables */
+    --gradient-fitness: linear-gradient(135deg, hsl(262 83% 58%), hsl(220 90% 60%));
+    --gradient-fitness-subtle: linear-gradient(135deg, hsl(262 83% 58% / 0.15), hsl(220 90% 60% / 0.15));
+    
+    --gradient-nutrition: linear-gradient(135deg, hsl(340 82% 52%), hsl(25 95% 53%));
+    --gradient-nutrition-subtle: linear-gradient(135deg, hsl(340 82% 52% / 0.15), hsl(25 95% 53% / 0.15));
+    
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%), hsl(340 82% 52%));
+    
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(262 83% 58% / 0.2);
+
+    --shadow-fitness: 0 10px 30px -10px hsl(262 83% 58% / 0.4);
+    --shadow-nutrition: 0 10px 30px -10px hsl(340 82% 52% / 0.4);
+    --shadow-elevated: 0 20px 60px -20px hsl(262 83% 58% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Utility Classes for GymJM */
+@layer utilities {
+  .gradient-fitness {
+    background: var(--gradient-fitness);
+  }
+  
+  .gradient-nutrition {
+    background: var(--gradient-nutrition);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-fitness-subtle {
+    background: var(--gradient-fitness-subtle);
+  }
+  
+  .gradient-nutrition-subtle {
+    background: var(--gradient-nutrition-subtle);
+  }
+  
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .shadow-fitness {
+    box-shadow: var(--shadow-fitness);
+  }
+  
+  .shadow-nutrition {
+    box-shadow: var(--shadow-nutrition);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Animações para exercícios */
+  .motivational-text {
+    font-family: 'Courier New', monospace;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: currentColor; }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pump {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+  }
+
+  @keyframes squat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  @keyframes legs {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .animate-pump {
+    animation: pump 1.5s ease-in-out infinite;
+  }
+
+  .animate-squat {
+    animation: squat 2s ease-in-out infinite;
+  }
+
+  .animate-legs {
+    animation: legs 2s ease-in-out infinite;
+  }
+}
+
+/* Garantir que o dropdown seja visível e funcional no mobile */
+@media (max-width: 768px) {
+  .mobile-theme-selector {
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .mobile-theme-dropdown {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 80vw !important;
+    max-width: 300px !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+    z-index: 1001 !important;
+  }
+  
+  .dark .mobile-theme-dropdown {
+    background: hsl(var(--card)) !important;
+  }
+  
+  .mixed .mobile-theme-dropdown {
+    background: hsl(var(--card)) !important;
+  }
+  
+  /* Garantir que o botão seja clicável */
+  .mobile-theme-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@layer components {
+  .motivational-text {
+    min-height: 24px;
+    position: relative;
+  }
+  
+  .motivational-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 2px;
+  }
+  
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  /* Estilos para imagens de exercícios com fundo transparente */
+  .transparent-image-container {
+    background: transparent !important;
+    position: relative;
+    display: inline-block;
+  }
+
+  .exercise-image-transparent {
+    background: transparent !important;
+    background-color: transparent !important;
+    
+    /* Remover qualquer fundo branco */
+    mix-blend-mode: multiply;
+    filter: contrast(1.1);
+    
+    /* Garantir que a imagem mostre o fundo da página */
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+    
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Overlay para garantir transparência */
+  .transparency-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Remover fundos de containers pais */
+  .exercise-demo-container,
+  .workout-illustration-wrapper,
+  .gif-display-wrapper {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+}
+
+
+/* Hide Lovable badge completely */
+a[href*="lovable.dev"], 
+
+iframe[src*="lovable.dev"],
+
+div[style*="Edit with Lovable"],
+
+.lovable-badge {
+
+  display: none !important;
+
+  opacity: 0 !important;
+
+  visibility: hidden !important;
+
+  pointer-events: none !important;
+
+  position: absolute !important;
+
+  z-index: -9999 !important;
+
+}
