@@ -51,7 +51,6 @@ export function Navbar() {
         
         <div className="flex justify-between items-center w-full md:w-auto md:justify-start md:gap-2">
           {navigation.map((item) => {
-            // === MODIFICAÇÃO: Ocultar "Perfil" no desktop (já existe no menu inferior) ===
             const isActive = location.pathname === item.href;
             const Icon = item.icon;
             const isProfileItem = item.name === "Perfil";
@@ -64,7 +63,7 @@ export function Navbar() {
                   className={cn(
                     "flex flex-col items-center gap-0.5 h-auto p-1.5 min-w-[50px] md:flex-row md:gap-2 md:px-4 md:p-2 md:min-w-[60px]",
                     isActive && "text-primary bg-gradient-fitness-subtle",
-                    isProfileItem && "md:hidden" // Ocultar no desktop
+                    isProfileItem && "hidden md:flex" // Mostrar apenas no desktop
                   )}
                 >
                   <Icon className="w-4 h-4 md:w-5 md:h-5" />
