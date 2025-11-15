@@ -82,6 +82,27 @@ export const WorkoutRecommendations = () => {
     }
   };
 
+  const handleStartExercise = (exercise: ExerciseRecommendation) => {
+    // Create a temporary workout with just this exercise
+    const tempWorkout = {
+      id: 'ai-recommendation',
+      name: `Treino AI: ${exercise.exerciseName}`,
+      focus: exercise.muscleGroup,
+      exercises: [{
+        name: exercise.exerciseName,
+        sets: exercise.sets,
+        reps: exercise.reps,
+        restTime: exercise.restTime || 60,
+        muscleGroup: exercise.muscleGroup,
+        difficulty: exercise.difficulty || 'intermediate'
+      }]
+    };
+    
+    navigate('/workout-session/ai-recommendation/single', {
+      state: { workout: tempWorkout }
+    });
+  };
+
   return (
     <Card className="border-border/40 bg-card/50 backdrop-blur">
       <CardHeader>
@@ -139,7 +160,11 @@ export const WorkoutRecommendations = () => {
             <ScrollArea className="h-[500px] pr-4">
               <div className="space-y-4">
                 {workoutPlan.recommendations.map((exercise, index) => (
-                  <Card key={index} className="border-border/40">
+                  <Card 
+                    key={index} 
+                    className="border-border/40 cursor-pointer hover:bg-card/80 hover:border-primary/50 transition-all"
+                    onClick={() => handleStartExercise(exercise)}
+                  >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
