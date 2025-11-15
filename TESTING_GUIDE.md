@@ -3,11 +3,39 @@
 ## 📋 Visão Geral
 Este guia mostra como testar todas as funcionalidades principais do aplicativo de fitness e nutrição em 24 horas.
 
+> 🚀 **NOVO! Modo Demo Disponível**  
+> Use o **Modo Demo** para pular o onboarding e ir direto aos testes! Basta criar sua conta e clicar em "Usar Modo Demo" na tela de dados pessoais.  
+> **Tempo economizado**: De 5 minutos de onboarding para apenas 5 segundos! ⚡
+
 ---
 
 ## 🚀 Passo 1: Criar Conta de Teste
 
-### Opção A: Criar conta com Email/Senha
+### Opção A: Modo Demo (MAIS RÁPIDO! ⚡)
+1. **Acesse a página inicial** (`/`)
+2. Clique no botão **"Começar Agora"** ou **"Iniciar Jornada Gratuita"**
+3. No diálogo que abre, clique em **"Criar Conta"**
+4. Preencha:
+   - Email: `teste@npngjm.com` (ou qualquer email de teste)
+   - Senha: `teste123` (mínimo 6 caracteres)
+5. Clique em **"Criar Conta"**
+6. Na tela de dados pessoais (Step 2), clique no botão **"Usar Modo Demo (Preencher Automaticamente)"**
+7. ✅ PRONTO! Você será redirecionado diretamente para o dashboard com todos os dados preenchidos
+
+**Dados do Modo Demo:**
+- Nome: Demo User
+- Gênero: Masculino
+- Nascimento: 15/01/1990 (35 anos)
+- Peso: 75 kg
+- Altura: 175 cm
+- Peso Meta: 70 kg
+- Experiência: Intermediário
+- Academia: Completa
+- Objetivo: Hipertrofia
+- Foco: Equilibrado com Cardio
+- Dias de Treino: Segunda, Quarta, Sexta às 18:00
+
+### Opção B: Criar conta com Email/Senha
 1. **Acesse a página inicial** (`/`)
 2. Clique no botão **"Começar Agora"** ou **"Iniciar Jornada Gratuita"**
 3. No diálogo que abre, clique em **"Criar Conta"**
@@ -17,7 +45,7 @@ Este guia mostra como testar todas as funcionalidades principais do aplicativo d
 5. Clique em **"Criar Conta"**
 6. ✅ Você será automaticamente logado e redirecionado para o onboarding
 
-### Opção B: Login com Google
+### Opção C: Login com Google
 1. Clique em **"Começar Agora"**
 2. Clique em **"Entrar com Google"**
 3. Selecione ou faça login com sua conta Google
@@ -349,7 +377,9 @@ Para reportar problemas ou sugerir melhorias:
 
 ---
 
-**Tempo total estimado**: 44 minutos para teste completo
+**Tempo total estimado**: 
+- **Com Modo Demo**: ~5 segundos + 44 minutos de teste = menos de 1 hora
+- **Sem Modo Demo**: ~5 minutos de onboarding + 44 minutos de teste = 49 minutos total
 **Duração do teste**: 24 horas de uso ativo
 
 Aproveite o teste! 💪🔥

@@ -49,6 +49,98 @@ const OnboardingFlow = () => {
     setData(prev => ({ ...prev, ...newData }));
   };
 
+  const fillDemoData = async () => {
+    const demoData: OnboardingData = {
+      name: "Demo User",
+      gender: "male",
+      birthDate: "1990-01-15",
+      weight: 75,
+      height: 175,
+      goalWeight: 70,
+      weightUnit: "kg",
+      heightUnit: "cm",
+      experience: "intermediate",
+      gymType: "advanced",
+      mainGoal: "hypertrophy",
+      muscleFocus: "balanced",
+      includeCardio: true,
+      trainingDays: ["monday", "wednesday", "friday"],
+      trainingSchedule: {
+        monday: "18:00",
+        wednesday: "18:00",
+        friday: "18:00",
+      },
+    };
+
+    try {
+      if (!user) {
+        toast.error("Usuário não autenticado");
+        return;
+      }
+
+      toast.loading("Carregando modo demo...", { id: "demo-mode" });
+
+      const age = 2025 - 1990; // Demo age
+      const fitnessGoal = "muscle_gain";
+
+      const { error } = await supabase
+        .from('profiles' as any)
+        .upsert({
+          user_id: user.id,
+          name: demoData.name,
+          age: age,
+          weight: demoData.weight,
+          height: demoData.height,
+          gender: demoData.gender,
+          fitness_goal: fitnessGoal,
+          onboarding_completed: true
+        } as any, {
+          onConflict: 'user_id'
+        } as any);
+
+      if (error) {
+        console.error('Erro ao salvar perfil demo:', error);
+        toast.error("Erro ao ativar modo demo", { id: "demo-mode" });
+        return;
+      }
+
+      // Garantir que a transação foi completada
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Salvar no localStorage como backup
+      const completeUserData = {
+        name: demoData.name,
+        age: age,
+        height: demoData.height,
+        weight: demoData.weight,
+        goalWeight: demoData.goalWeight,
+        gender: demoData.gender,
+        birthDate: demoData.birthDate,
+        weightUnit: demoData.weightUnit,
+        heightUnit: demoData.heightUnit,
+        experience: demoData.experience,
+        gymType: demoData.gymType,
+        mainGoal: demoData.mainGoal,
+        muscleFocus: demoData.muscleFocus,
+        includeCardio: demoData.includeCardio,
+        trainingDays: demoData.trainingDays,
+        trainingSchedule: demoData.trainingSchedule,
+        activityLevel: "moderate",
+        fitnessGoal: fitnessGoal,
+        hasCompletedOnboarding: true
+      };
+      
+      localStorage.setItem('userData', JSON.stringify(completeUserData));
+      localStorage.setItem('onboardingCompleted', 'true');
+      
+      toast.success("Modo demo ativado! Redirecionando...", { id: "demo-mode" });
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Erro ao ativar modo demo:', error);
+      toast.error("Erro ao ativar modo demo", { id: "demo-mode" });
+    }
+  };
+
   const nextStep = async () => {
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
@@ -135,6 +227,7 @@ const OnboardingFlow = () => {
       updateData,
       nextStep,
       prevStep,
+      fillDemoData,
     };
 
     switch (currentStep) {
