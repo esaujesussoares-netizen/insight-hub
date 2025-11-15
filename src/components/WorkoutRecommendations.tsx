@@ -89,12 +89,21 @@ export const WorkoutRecommendations = () => {
       name: `Treino AI: ${exercise.exerciseName}`,
       focus: exercise.muscleGroup,
       exercises: [{
+        id: Date.now(),
         name: exercise.exerciseName,
+        type: 'principal' as const,
         sets: exercise.sets,
         reps: exercise.reps,
         restTime: exercise.restTime || 60,
+        animation: exercise.exerciseName.toLowerCase().replace(/\s+/g, '_'),
+        instructions: [
+          'Execute o movimento de forma controlada',
+          'Mantenha a postura correta durante todo o exercício',
+          'Respire adequadamente durante a execução',
+          'Ajuste o peso conforme necessário'
+        ],
         muscleGroup: exercise.muscleGroup,
-        difficulty: exercise.difficulty || 'intermediate'
+        equipment: ['Academia']
       }]
     };
     
