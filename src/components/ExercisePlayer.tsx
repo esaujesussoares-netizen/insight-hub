@@ -43,12 +43,19 @@ const ExercisePlayer: React.FC<ExercisePlayerProps> = ({
       {/* Cabeçalho do Exercício */}
       <div className="text-center">
         <div className="flex items-center justify-center gap-2 mb-3">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getExerciseTypeColor(exercise.type)}`}>
-            {exercise.type.toUpperCase()}
-          </span>
-          <span className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
-            {exercise.muscleGroup}
-          </span>
+          {(() => {
+            const typeLabel = (exercise?.type ?? 'principal');
+            return (
+              <>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getExerciseTypeColor(typeLabel)}`}>
+                  {typeLabel.toUpperCase()}
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
+                  {exercise.muscleGroup}
+                </span>
+              </>
+            );
+          })()}
         </div>
         
         <h2 className="text-3xl font-bold mb-2">{exercise.name}</h2>

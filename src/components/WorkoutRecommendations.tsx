@@ -88,6 +88,7 @@ export const WorkoutRecommendations = () => {
       id: 'ai-recommendation',
       name: `Treino AI: ${exercise.exerciseName}`,
       focus: exercise.muscleGroup,
+      duration: '10-15 min',
       exercises: [{
         id: Date.now(),
         name: exercise.exerciseName,
