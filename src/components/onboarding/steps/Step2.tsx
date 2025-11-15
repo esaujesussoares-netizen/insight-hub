@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, ChevronLeft, Edit } from "lucide-react";
+import { CalendarIcon, ChevronLeft, Edit, Zap } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { OnboardingData } from "../OnboardingFlow";
@@ -17,9 +17,10 @@ interface StepProps {
   updateData: (data: Partial<OnboardingData>) => void;
   nextStep: () => void;
   prevStep: () => void;
+  fillDemoData?: () => void;
 }
 
-const Step2 = ({ data, updateData, nextStep, prevStep }: StepProps) => {
+const Step2 = ({ data, updateData, nextStep, prevStep, fillDemoData }: StepProps) => {
   const [date, setDate] = useState<Date | undefined>(
     data.birthDate ? new Date(data.birthDate) : undefined
   );
@@ -246,6 +247,31 @@ const Step2 = ({ data, updateData, nextStep, prevStep }: StepProps) => {
           </div>
         </div>
       </div>
+
+      {/* Demo Mode Button */}
+      {fillDemoData && (
+        <div className="pt-2 pb-4">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">atalho</span>
+            </div>
+          </div>
+          <Button
+            onClick={fillDemoData}
+            variant="outline"
+            className="w-full mt-4 border-dashed border-2 hover:border-primary hover:bg-primary/5 transition-all"
+          >
+            <Zap className="w-4 h-4 mr-2" />
+            Usar Modo Demo (Preencher Automaticamente)
+          </Button>
+          <p className="text-xs text-muted-foreground text-center mt-2">
+            Preenche todos os dados com informações de exemplo para testar o app rapidamente
+          </p>
+        </div>
+      )}
 
       <div className="flex gap-3">
         <Button variant="outline" onClick={prevStep} className="w-full">
