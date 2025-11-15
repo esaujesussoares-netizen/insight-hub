@@ -5,6 +5,7 @@ import { StatCard } from "@/components/StatCard";
 import { Dumbbell, Apple, TrendingUp, Zap, Camera, Users, ChefHat } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import heroVideo from "@/assets/hero-video.mp4";
+import heroVideo2 from "@/assets/hero-video-2.mp4";
 import heroFitnessImage from "@/assets/hero-fitness.jpg";
 import nutritionImage from "@/assets/nutrition-hero.jpg";
 import workoutsImage from "@/assets/workouts-hero.jpg";
@@ -17,11 +18,14 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(0);
   const { user } = useAuth();
   const { onboardingCompleted, loading } = useOnboardingStatus();
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = useIsMobile();
+
+  const videos = [heroVideo, heroVideo2];
 
   // Não redirecionar automaticamente - usuário pode navegar livremente
   // O onboarding será acessado apenas quando o usuário clicar em "Começar Agora"
@@ -43,8 +47,8 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <video 
+          key={currentVideo}
           autoPlay 
-          loop 
           muted 
           playsInline
           webkit-playsinline="true"
@@ -57,8 +61,11 @@ const Index = () => {
               // Fallback silencioso se autoplay falhar
             });
           }}
+          onEnded={() => {
+            setCurrentVideo((prev) => (prev + 1) % videos.length);
+          }}
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src={videos[currentVideo]} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-hero opacity-90" />
         
