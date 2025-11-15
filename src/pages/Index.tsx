@@ -12,6 +12,7 @@ import { AuthDialog } from "@/components/AuthDialog";
 import { useAuth } from "@/hooks/useAuth";
 import { useOnboardingStatus } from "@/hooks/useOnboardingStatus";
 import { Clock } from "@/components/Clock";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
   const { onboardingCompleted, loading } = useOnboardingStatus();
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   // Não redirecionar automaticamente - usuário pode navegar livremente
   // O onboarding será acessado apenas quando o usuário clicar em "Começar Agora"
@@ -62,9 +64,11 @@ const Index = () => {
         
         <div className="relative z-10 px-4 py-20 text-center text-white">
           <div className="max-w-4xl mx-auto">
-            <div className="flex justify-center mb-6">
-              <Clock />
-            </div>
+            {!isMobile && (
+              <div className="flex justify-center mb-6">
+                <Clock />
+              </div>
+            )}
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               nPnG <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">JM</span>
             </h1>
