@@ -54,7 +54,7 @@ const Index = () => {
           webkit-playsinline="true"
           preload="auto"
           poster={heroFitnessImage}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover animate-fade-in"
           onLoadedData={(e) => {
             const video = e.currentTarget;
             video.play().catch(() => {
